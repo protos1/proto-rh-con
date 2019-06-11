@@ -12,6 +12,16 @@ export default new Router({
       path: "/",
       name: "home",
       component: Home
+    },
+    {
+      path: "/users",
+      name: "users",
+      component: () => import("./views/Users/Index.vue")
+    },
+    {
+      path: "/users/new",
+      name: "new-user",
+      component: () => import("./views/Users/New.vue")
     }
   ]
 });

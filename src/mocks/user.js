@@ -1,4 +1,4 @@
-export const all = [
+export const currentUser = [
   {
     Id: "a199jshehgrhfkjmdmdmdk12",
     UserName: "renan-zozimo",
@@ -13,6 +13,8 @@ export const all = [
     Matricula: "12345619910"
   }
 ];
+
+export const all = [];
 
 export const m = [
   {

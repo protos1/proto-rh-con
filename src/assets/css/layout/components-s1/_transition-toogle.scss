@@ -1,0 +1,14 @@
+.s1-U__toogle-transition {
+  > * {
+    opacity: 0;
+    max-height: 0;
+    max-width: 0;
+    transition: max-width 0ms linear 300ms, max-height 0ms linear 300ms, opacity 300ms ease-in-out 0ms;
+  }
+  .active {
+    opacity: 1;
+    max-height: 40px;
+    max-width: 150px;
+    transition: max-width 0ms linear 300ms, max-height 0ms linear 300ms, opacity 300ms ease-in-out 350ms;
+  }
+}

@@ -1,0 +1,32 @@
+[class].#{$utilitiesClassNamePrefix} {
+  &__full-width {
+    width: 100%;
+  }
+  &__no-max-width {
+    max-width: unset;
+    &#{$forceSuffix} {
+      max-width: unset !important;
+    }
+  }
+  &__no-min-width {
+    min-width: unset;
+    &#{$forceSuffix} {
+      min-width: unset !important;
+    }
+  }
+}
+
+@include widthFactory(96);
+@include widthFactory(100);
+@include widthFactory(130);
+@include widthFactory(144);
+@include widthFactory(160);
+@include widthFactory(176);
+@include widthFactory(180);
+@include widthFactory(210);
+@include widthFactory(240);
+@include widthFactory(300);
+@include widthFactory(320);
+@include widthFactory(400);
+@include widthFactory(540);
+@include widthFactory(900);

@@ -1,0 +1,53 @@
+@import "~vue-material/dist/vue-material.min.css";
+
+//HACKS (crazy hacks to craziest contexts)
+@import "./layout/hacks/hacks";
+
+//VARIABLES
+@import "./global-variables";
+@import "./layout/variables";
+
+//MIXINS
+@import "./layout/_mixins/border-radius";
+@import "./layout/_mixins/instalment-colors";
+@import "./layout/_mixins/md-field-size";
+@import "./layout/_mixins/spacing-utilities";
+@import "./layout/_mixins/width-size";
+
+//MODS
+@import "./layout/mods/md-app";
+@import "./layout/mods/md-button";
+@import "./layout/mods/md-card";
+@import "./layout/mods/md-drawer";
+@import "./layout/mods/md-field";
+@import "./layout/mods/md-field";
+@import "./layout/mods/md-layout";
+@import "./layout/mods/md-radio";
+@import "./layout/mods/md-svg-loader";
+@import "./layout/mods/md-table";
+@import "./layout/mods/resets";
+
+//COMPONENTS - S1
+@import "./layout/components-s1/app-toolbar";
+@import "./layout/components-s1/card-flag";
+@import "./layout/components-s1/chip-wrapper";
+@import "./layout/components-s1/img-logo";
+@import "./layout/components-s1/mezzanine";
+@import "./layout/components-s1/sort-icons";
+@import "./layout/components-s1/tag";
+@import "./layout/components-s1/transition-toogle";
+@import "./layout/components-s1/upload";
+@import "./layout/components-s1/vertical-divider";
+
+//UTILITIES
+@import "./layout/utilities/align-items";
+@import "./layout/utilities/border-radius";
+@import "./layout/utilities/border";
+@import "./layout/utilities/flex-settings";
+@import "./layout/utilities/height";
+@import "./layout/utilities/justify-content";
+@import "./layout/utilities/margins";
+@import "./layout/utilities/paddings";
+@import "./layout/utilities/text-settings";
+@import "./layout/utilities/visibility";
+@import "./layout/utilities/width";

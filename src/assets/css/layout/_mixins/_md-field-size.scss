@@ -1,0 +1,10 @@
+@mixin md-field-size($num) {
+  .md-field.s1-md-field--w#{$num}px {
+    width: unquote($num + 'px');
+    min-height: auto;
+    input {
+      width: unquote($num + 'px');
+      flex: unset;
+    }
+  }
+}

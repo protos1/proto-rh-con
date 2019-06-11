@@ -1,0 +1,13 @@
+.md-table-head-container,
+.md-table-head-label {
+  overflow: visible !important;
+  height: auto !important;
+}
+
+.md-table-head-label {
+  width: 100% !important;
+  height: 100%;
+  & > .md-layout {
+    height: 100%;
+  }
+}

@@ -1,0 +1,19 @@
+//THEME
+@import "~vue-material/dist/theme/engine";
+@include md-register-theme(
+  "default",
+  (
+    primary: md-get-palette-color(red, 400),
+    accent: md-get-palette-color(red, 900)
+  )
+);
+//VUE MATERIAL COMPONENTS THEME
+@import "~vue-material/dist/theme/all";
+//ALL S1 VARIABLES
+@import "./global-variables";
+@import "./theme/variables";
+//COMPONENTS - S1
+@import "./theme/components-s1/tag";
+//UTILITIES
+@import "./theme/utilities/bg-color";
+@import "./theme/utilities/text-color";

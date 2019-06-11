@@ -1,0 +1,42 @@
+.md-button.s1-md-bordered {
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid;
+    opacity: 0.15;
+  }
+  &.md-primary,
+  &.md-accent {
+    &::after {
+      opacity: 0.3;
+    }
+  }
+}
+
+.md-button {
+  margin: 0;
+}
+
+.md-icon-button.s1-md-bordered:not(.squared) {
+  &::after {
+    border-radius: 50%;
+  }
+}
+
+.md-icon-button.squared {
+  &,
+  & .md-ripple,
+  &::before {
+    border-radius: 2px;
+  }
+}
+
+.md-button-content--full-width {
+  .md-button-content {
+    width: 100%;
+  }
+}

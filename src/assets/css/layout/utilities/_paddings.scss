@@ -1,0 +1,7 @@
+$vertical: (0, 4, 8, 16, 20, 24, 32, 40, 48, 64);
+$horizontal: (0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64);
+@include spacingUtilityClasses("__pd", "padding", (0, 8, 16, 20, 24, 32));
+@include spacingUtilityClasses("__pd--tp", "padding-top", $vertical);
+@include spacingUtilityClasses("__pd--rt", "padding-right", $horizontal);
+@include spacingUtilityClasses("__pd--bt", "padding-bottom", $vertical);
+@include spacingUtilityClasses("__pd--lt", "padding-left", $horizontal);

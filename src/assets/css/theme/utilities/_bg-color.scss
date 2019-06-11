@@ -1,0 +1,32 @@
+[class].#{$utilitiesClassNamePrefix}__bg-color {
+  &--white {
+    background-color: $white;
+    &-force {
+      background-color: $white !important;
+    }
+  }
+  &--primary {
+    background-color: $primary;
+    &-force {
+      background-color: $primary !important;
+    }
+  }
+  &--accent {
+    background-color: $accent;
+    &-force {
+      background-color: $accent !important;
+    }
+  }
+  &--body-bg {
+    background-color: $app-background-color;
+    &-force {
+      background-color: $app-background-color !important;
+    }
+  }
+  &--transparent {
+    background-color: transparent;
+    &-force {
+      background-color: transparent !important;
+    }
+  }
+}

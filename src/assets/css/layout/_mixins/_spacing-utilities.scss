@@ -1,0 +1,10 @@
+@mixin spacingUtilityClasses($selector, $prop, $spacings) {
+  @each $n in $spacings {
+    .#{$utilitiesClassNamePrefix}#{$selector}#{$n}, [class].#{$utilitiesClassNamePrefix}#{$selector}#{$n} {
+      #{$prop}: #{$n}px;
+    }
+    .#{$utilitiesClassNamePrefix}#{$selector}#{$n}-force, [class].#{$utilitiesClassNamePrefix}#{$selector}#{$n}-force {
+      #{$prop}: #{$n}px !important;
+    }
+  }
+}

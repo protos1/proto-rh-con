@@ -1,0 +1,12 @@
+[class].#{$utilitiesClassNamePrefix} {
+
+  &__full-height {
+    height: 100%;
+  }
+  &__height-auto {
+    height: auto;
+    &#{$forceSuffix} {
+      height: auto !important;
+    }
+  }
+}

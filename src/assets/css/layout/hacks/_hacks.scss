@@ -1,0 +1,24 @@
+//THESE HACKS ARE MEANT TO AVOID "!IMPORTANT" IN CSS
+//The "!important" break utilities classes operation and bring a lot of long-term problem
+
+
+//Remove crazy margin from cards
+div.md-card.s1-U__mg0 {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+//Remove crazy margin from icons
+i.md-icon {
+  margin: 0;
+}
+
+//Handles exception case: No padding in md-content inside table
+*:not(.md-table) > .md-content {
+  padding: 20px;
+}
+
+//Handles exception case: An input inside a datepicker md-field
+.md-datepicker .md-input {
+  width: 100%;
+}

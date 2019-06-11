@@ -1,0 +1,17 @@
+@mixin pxRadius($num) {
+  .#{$utilitiesClassNamePrefix}__border-radius--#{$num}px {
+    border-radius: unquote($num + 'px');
+    &#{$forceSuffix} {
+      border-radius: unquote($num + 'px') !important;
+    }
+  }
+}
+
+@mixin percentRadius($num) {
+  .#{$utilitiesClassNamePrefix}__border-radius--#{$num}p {
+    border-radius: unquote($num + '%');
+    &#{$forceSuffix} {
+      border-radius: unquote($num + '%') !important;
+    }
+  }
+}

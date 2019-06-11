@@ -1,0 +1,39 @@
+[class].#{$utilitiesClassNamePrefix} {
+  &__text-align {
+    &--right {
+      text-align: right;
+    }
+    &--center {
+      text-align: center;
+    }
+  }
+  &__text-nowrap {
+    white-space: nowrap;
+  }
+  &__text-lowercase {
+    text-transform: lowercase;
+    &#{$forceSuffix} {
+      text-transform: lowercase !important;
+    }
+  }
+  &__text-uppercase {
+    text-transform: uppercase;
+    &#{$forceSuffix} {
+      text-transform: uppercase !important;
+    }
+  }
+  &__text-ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+[class].#{$utilitiesClassNamePrefix} {
+  &__fw--300 {
+    font-weight: 300;
+    &#{$forceSuffix} {
+      font-weight: 300 !important;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  &:not([class*="s1-U__mg--bt"]) {
+    margin-bottom: 0;
+  }
+  &:not([class*="s1-U__mg--tp"]) {
+    margin-top: 0;
+  }
+}
+
+input {
+  max-width: 100%;
+}
+
+hr {
+  border-width: 1px 0 0;
+  border-style: solid none none;
+}
+
+/* For Firefox */
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Webkit browsers like Safari and Chrome */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input,
+textarea {
+  -webkit-text-fill-color: unset !important;
+}

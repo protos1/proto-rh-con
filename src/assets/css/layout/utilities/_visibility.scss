@@ -1,0 +1,19 @@
+[class].#{$utilitiesClassNamePrefix} {
+  &__invisible {
+    opacity: 0;
+    &-#{$forceSuffix} {
+      opacity: 0 !important;
+    }
+  }
+  &__opacity {
+    &--30 {
+      opacity: .3;
+    }
+    &--40 {
+      opacity: .4;
+    }
+    &--54 {
+      opacity: .54;
+    }
+  }
+}

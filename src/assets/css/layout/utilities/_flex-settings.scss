@@ -1,0 +1,46 @@
+[class].#{$utilitiesClassNamePrefix} {
+
+  &__flex-shrink-0 {
+    & {
+      flex-shrink: 0;
+    }
+  }
+
+  &__unset-flex {
+    & {
+      flex: unset;
+    }
+
+    &#{$forceSuffix} {
+      flex: unset;
+    }
+  }
+
+  &__no-flex {
+    & {
+      flex: 0;
+    }
+
+    &#{$forceSuffix} {
+      flex: 0;
+    }
+  }
+
+  &__flex-nowrap {
+    &, &.md-layout {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__flex-wrap {
+    &, &.md-layout {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+}

@@ -1,0 +1,42 @@
+.s1-tag {
+  padding: 1px 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  // &--accent {
+  //   background-color: $accent;
+  //   color: $white;
+  // }
+  // &--primary {
+  //   background-color: $primary;
+  //   color: $white;
+  // }
+  // &:not([class*="--accent"]) {
+  //   background-color: #efefef;
+  //   color: rgba(0,0,0,0.54)
+  // }
+  margin-left: 4px;
+  margin-top: 4px;
+  transform: translateY(-4px) translateX(-4px);
+}
+
+.s1-tag__wrapper {
+  display: flex;
+  position: relative;
+  &--wrap {
+    flex-wrap: wrap;
+  }
+  &:not([class*="--wrap"]) {
+    & {
+      overflow: hidden;
+    }
+    &::after {
+      content: "";
+      width: 60px;
+      height: calc(100% + 10px);
+      position: absolute;
+      right: 0;
+      top: -5px;
+      background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+    }
+  }
+}

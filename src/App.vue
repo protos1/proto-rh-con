@@ -1,31 +1,115 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <transition name="fade">
+      <div
+        class="s1-loc__general-loading"
+        v-show="$store.state.view.generalLoading"
+      >
+        <md-progress-spinner
+          class="md-accent"
+          :md-stroke="2"
+          :md-diameter="96"
+          md-mode="indeterminate"
+        ></md-progress-spinner>
+      </div>
+    </transition>
+
+    <my-account-panel v-if="currentUser" :currentUser="currentUser" />
+
+    <md-app class="s1-md-app">
+      <md-app-drawer
+        class="md-xsmall-hide md-small-hide"
+        :md-active.sync="menuVisible"
+        md-persistent="mini"
+      >
+        <div class="s1-logo__wrapper">
+          <img
+            v-show="!menuVisible"
+            class="s1-logo__img"
+            src="./assets/imgs/mapfre-mini.png"
+            alt="company logo"
+          />
+          <img
+            v-show="menuVisible"
+            class="s1-logo__img"
+            src="./assets/imgs/mapfre.png"
+            alt="company logo"
+          />
+        </div>
+
+        <md-list :md-expand-single="true">
+          <md-list-item @click="toggleMenu">
+            <md-icon v-if="!menuVisible">menu</md-icon>
+            <md-icon v-if="menuVisible">keyboard_arrow_left</md-icon>
+            <span class="md-list-item-text">Esconder</span>
+            <md-tooltip md-direction="right" v-show="!menuVisible"
+              >Expandir menu</md-tooltip
+            >
+          </md-list-item>
+
+          <md-list-item @click="to('/')">
+            <md-icon>home</md-icon>
+            <span class="md-list-item-text">Página inicial</span>
+            <md-tooltip md-direction="right" v-show="!menuVisible"
+              >Página inicial</md-tooltip
+            >
+          </md-list-item>
+        </md-list>
+      </md-app-drawer>
+
+      <md-app-content class="s1-U__bg-color--body-bg s1-loc__relative">
+        <div
+          class="s1-loc__top-brand s1-U__bg-color--primary"
+          v-show="$route.name === 'mapfre'"
+        />
+        <div style="z-index: 2; position: relative">
+          <router-view />
+        </div>
+      </md-app-content>
+    </md-app>
+    <md-snackbar
+      md-position="left"
+      :md-duration="snackbarDuration"
+      :md-active.sync="$store.state.view.showSnackbar"
+      md-persistent
+    >
+      <p>
+        Solicitação conluída com sucesso.
+      </p>
+      <md-button class="md-primary flex-shrink-0" @click="clSnack()"
+        >Fechar</md-button
+      >
+    </md-snackbar>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
+import MyAccountPanel from "./components/MyAccountPanel/index";
+import router from "@/router";
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+  name: "App",
+  components: {
+    MyAccountPanel
+  },
+  data: () => ({
+    currentUser: null,
+    menuVisible: false,
+    snackbarDuration: 4000
+  }),
+  methods: {
+    toggleMenu() {
+      this.menuVisible = !this.menuVisible;
+    },
+    to(r) {
+      router.push(r);
+    },
+    clSnack() {
+      this.$store.dispatch("hideSnackbar");
+    }
+  },
+  mounted() {
+    this.currentUser = this.$store.state.currentUser;
+  }
+};
+</script>

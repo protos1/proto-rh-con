@@ -1,0 +1,27 @@
+[class].s1-sort-icons {
+  & {
+    width: 24px;
+    height: 24px;
+    position: relative;
+  }
+  i {
+    position: absolute;
+    margin: 0 !important;
+    height: 16px;
+    width: 16px;
+  }
+  &__icon--down {
+    left: 0;
+    bottom: 0;
+  }
+  &__icon--up {
+    left: 0;
+    top: 0;
+  }
+  &__icon--down,
+  &__icon--up {
+    &:not(.md-primary):not(.md-accent) {
+      opacity: 0.4;
+    }
+  }
+}

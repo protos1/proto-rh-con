@@ -1,0 +1,7 @@
+.md-drawer {
+  width: 250px;
+  &.md-persistent-mini {
+    transform: none !important;
+    border: 0 none !important;
+  }
+}

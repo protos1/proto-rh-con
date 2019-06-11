@@ -1,0 +1,19 @@
+[class].s1-chip-wrapper {
+  &--left {
+    .md-chip + .md-chip {
+      margin-left: 0;
+    }
+    .md-chip {
+      margin-right: 4px;
+    }
+  }
+  &--left, &--right {
+    & {
+      padding-bottom: 4px;
+    }
+    .md-chip {
+      margin-bottom: 4px;
+      transform: translateY(4px);
+    }
+  }
+}

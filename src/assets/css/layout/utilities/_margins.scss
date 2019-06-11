@@ -1,0 +1,7 @@
+$vertical: (0, 4, 8, 16, 20, 24, 32, 40, 48, 64);
+$horizontal: (0, 4, 8, 16, 20, 24, 32, 48, 56, 64);
+@include spacingUtilityClasses("__mg", "margin", (0, 4, 8));
+@include spacingUtilityClasses("__mg--tp", "margin-top", $vertical);
+@include spacingUtilityClasses("__mg--rt", "margin-right", $horizontal);
+@include spacingUtilityClasses("__mg--bt", "margin-bottom", $vertical);
+@include spacingUtilityClasses("__mg--lt", "margin-left", $horizontal);

@@ -1,0 +1,36 @@
+.md-app-toolbar.s1-app-toolbar--centralized-shadow {
+  & {
+    position: relative;
+    z-index: 3;
+  }
+  &.md-elevation-4 {
+    box-shadow: 0 0;
+  }
+  &::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    border-radius: 25%;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+  &:not(.md-primary):not(.md-accent):not(.md-transparent)::after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: #fff;
+  }
+  &.md-elevation-4.md-no-elevation::before {
+    opacity: 0;
+  }
+}

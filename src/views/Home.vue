@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="s1-loc__container">
     <h1 class="md-display-1">Renan Zózimo</h1>
   </div>
 </template>

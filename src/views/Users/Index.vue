@@ -114,24 +114,38 @@
         md-card
       >
         <md-table-row slot="md-table-row" slot-scope="{ item }">
-          <md-table-cell md-label="First Name" md-sort-by="FirstName">{{
-            item.FirstName
-          }}</md-table-cell>
-          <md-table-cell md-label="Last Name" md-sort-by="LastName">{{
-            item.LastName
-          }}</md-table-cell>
-          <md-table-cell md-label="User Name" md-sort-by="UserName">{{
-            item.UserName
-          }}</md-table-cell>
-          <md-table-cell md-label="Email" md-sort-by="Email">{{
-            item.Email
-          }}</md-table-cell>
+          <md-table-cell md-label="First Name" md-sort-by="FirstName">
+            {{ item.FirstName }}
+          </md-table-cell>
+
+          <md-table-cell md-label="Last Name" md-sort-by="LastName">
+            {{ item.LastName }}
+          </md-table-cell>
+
+          <md-table-cell md-label="User Name" md-sort-by="UserName">
+            <div
+              class="s1-U__align-children--center s1-U__justify-content--space-between"
+            >
+              <p class="s1-U__pd--rt16">{{ item.UserName }}</p>
+              <div>
+                <md-icon>{{ item.Active ? "check" : "block" }}</md-icon>
+                <md-tooltip md-direction="left">
+                  {{ item.Active ? "Ativo" : "Inativo" }}
+                </md-tooltip>
+              </div>
+            </div>
+          </md-table-cell>
+
+          <md-table-cell md-label="Email" md-sort-by="Email">
+            {{ item.Email }}
+          </md-table-cell>
+
           <md-table-cell md-label="" md-sort-by="" md-numeric>
             <md-button
               class="md-icon-button md-mini"
               @click="to(`/users/edit/${item.Id}`)"
             >
-              <md-icon>edit</md-icon>
+              <md-icon>more_vert</md-icon>
             </md-button>
           </md-table-cell>
         </md-table-row>
@@ -140,11 +154,11 @@
 
     <md-dialog :md-active.sync="importUserDialog">
       <header
-        class="s1-U__pd24 s1-U__align-children--center s1-U__justify-content--space-between"
+        class="s1-U__pd24 s1-U__pd--rt16 s1-U__align-children--center s1-U__justify-content--space-between"
       >
         <h2 class="md-title">Importar usuários</h2>
         <md-button
-          class="md-icon-button md-mini s1-U__mg--rt8"
+          class="md-icon-button md-mini"
           @click="importUserDialog = false"
         >
           <md-icon>close</md-icon>

@@ -9,7 +9,8 @@ export const currentUser = {
   PhoneNumber: "3198765412",
   CPF: "084.199.045-70",
   Name: "Renan Zózimo",
-  Matricula: "12345619910"
+  Matricula: "12345619910",
+  Password: "Abc123"
 };
 
 export const all = [];
@@ -26,149 +27,170 @@ export const m = {
   DocumentNumber: "",
   Name: "",
   Matricula: "",
-  Password: ""
+  Password: "",
+  Active: true
 };
 
 export const ImportedUsers = [
   {
-    Id: "fb3e6b78-7477-4a93-bbdc-b9cf37d1d049",
+    Id: "aea5b218-37ac-4551-a82d-21753dfd6867",
     Photo: "",
-    FirstName: "Vonda",
-    LastName: "Gould",
-    Email: "vondagould@sequitur.com",
-    FullUserName: "Vonda Gould",
-    PhoneNumber: "31990907746",
-    DocumentType: "CNH",
-    DocumentNumber: "'38335731214'",
-    Name: "Vonda Gould",
-    Password: "fugiat321",
-    UserName: "vondagould"
-  },
-  {
-    Id: "7cb7b067-22b6-4b2a-8def-316b8faf4143",
-    Photo: "",
-    FirstName: "Adeline",
-    LastName: "Owens",
-    Email: "adelineowens@sequitur.com",
-    FullUserName: "Adeline Owens",
-    PhoneNumber: "31991652839",
+    FirstName: "Kemp",
+    LastName: "Ayala",
+    Email: "kempayala@eventage.com",
+    FullUserName: "Kemp Ayala",
+    PhoneNumber: "31993178366",
+    Matricula: "177086362",
     DocumentType: "CPF",
-    DocumentNumber: "'36208463407'",
-    Name: "Adeline Owens",
-    Password: "dolore234",
-    UserName: "adelineowens"
+    DocumentNumber: "'7962798498'",
+    Name: "Kemp Ayala",
+    Password: "eu866",
+    UserName: "kempayala",
+    Active: true
   },
   {
-    Id: "dd6fd245-180e-4272-b09e-25c96de28961",
+    Id: "b3ac9b71-4d8c-4453-9c64-6dce0d13f4c0",
     Photo: "",
-    FirstName: "Hendrix",
-    LastName: "Spence",
-    Email: "hendrixspence@sequitur.com",
-    FullUserName: "Hendrix Spence",
-    PhoneNumber: "31995205918",
+    FirstName: "Stefanie",
+    LastName: "Grant",
+    Email: "stefaniegrant@eventage.com",
+    FullUserName: "Stefanie Grant",
+    PhoneNumber: "31998557764",
+    Matricula: "17445659",
     DocumentType: "RG",
-    DocumentNumber: "'44684893035'",
-    Name: "Hendrix Spence",
-    Password: "pariatur641",
-    UserName: "hendrixspence"
+    DocumentNumber: "'62705333949'",
+    Name: "Stefanie Grant",
+    Password: "culpa560",
+    UserName: "stefaniegrant",
+    Active: true
   },
   {
-    Id: "c296fe3c-f51c-4fa8-ae82-d39bb3a803c9",
+    Id: "5b12fe0f-43d4-4990-aa4a-d0dc8f5625ac",
     Photo: "",
-    FirstName: "Flowers",
-    LastName: "Dickson",
-    Email: "flowersdickson@sequitur.com",
-    FullUserName: "Flowers Dickson",
-    PhoneNumber: "31993775580",
+    FirstName: "Ellison",
+    LastName: "Dyer",
+    Email: "ellisondyer@eventage.com",
+    FullUserName: "Ellison Dyer",
+    PhoneNumber: "31997628327",
+    Matricula: "176352755",
     DocumentType: "RG",
-    DocumentNumber: "'83286497824'",
-    Name: "Flowers Dickson",
-    Password: "non785",
-    UserName: "flowersdickson"
+    DocumentNumber: "'13343011087'",
+    Name: "Ellison Dyer",
+    Password: "qui400",
+    UserName: "ellisondyer",
+    Active: true
   },
   {
-    Id: "bcc970c3-0c20-4d38-b407-ecff2885abc4",
+    Id: "005223f5-f034-478b-8ea3-e81850bc8828",
     Photo: "",
-    FirstName: "Mccall",
-    LastName: "Vance",
-    Email: "mccallvance@sequitur.com",
-    FullUserName: "Mccall Vance",
-    PhoneNumber: "31987985340",
-    DocumentType: "CPF",
-    DocumentNumber: "'19472113837'",
-    Name: "Mccall Vance",
-    Password: "dolore320",
-    UserName: "mccallvance"
-  },
-  {
-    Id: "ead02701-299a-4f92-beaf-8eccb95d85f4",
-    Photo: "",
-    FirstName: "Aileen",
-    LastName: "Burks",
-    Email: "aileenburks@sequitur.com",
-    FullUserName: "Aileen Burks",
-    PhoneNumber: "31990768425",
+    FirstName: "Wallace",
+    LastName: "Townsend",
+    Email: "wallacetownsend@eventage.com",
+    FullUserName: "Wallace Townsend",
+    PhoneNumber: "31993613582",
+    Matricula: "175155049",
     DocumentType: "CNH",
-    DocumentNumber: "'77621004462'",
-    Name: "Aileen Burks",
-    Password: "esse263",
-    UserName: "aileenburks"
+    DocumentNumber: "'13865464345'",
+    Name: "Wallace Townsend",
+    Password: "nulla421",
+    UserName: "wallacetownsend",
+    Active: true
   },
   {
-    Id: "9ca162ae-a9cd-4f51-a585-c3335d6dda74",
+    Id: "f1bf633a-6e64-493e-b15e-db72acd5b865",
     Photo: "",
-    FirstName: "Casandra",
-    LastName: "Lopez",
-    Email: "casandralopez@sequitur.com",
-    FullUserName: "Casandra Lopez",
-    PhoneNumber: "31995135730",
+    FirstName: "Shelby",
+    LastName: "Giles",
+    Email: "shelbygiles@eventage.com",
+    FullUserName: "Shelby Giles",
+    PhoneNumber: "31985672891",
+    Matricula: "174908492",
+    DocumentType: "CNH",
+    DocumentNumber: "'70737417382'",
+    Name: "Shelby Giles",
+    Password: "consectetur824",
+    UserName: "shelbygiles",
+    Active: true
+  },
+  {
+    Id: "b2e83fcf-75d4-45d7-b7a3-da50b3b4257e",
+    Photo: "",
+    FirstName: "Ann",
+    LastName: "Jackson",
+    Email: "annjackson@eventage.com",
+    FullUserName: "Ann Jackson",
+    PhoneNumber: "31998227665",
+    Matricula: "178053419",
     DocumentType: "RG",
-    DocumentNumber: "'56445615951'",
-    Name: "Casandra Lopez",
-    Password: "exercitation989",
-    UserName: "casandralopez"
+    DocumentNumber: "'36532765418'",
+    Name: "Ann Jackson",
+    Password: "aliquip825",
+    UserName: "annjackson",
+    Active: true
   },
   {
-    Id: "bf24138b-4d2c-4d79-a162-37c9dae097d9",
+    Id: "f4cb4cfc-ff20-4068-9d9c-f2b12cb06330",
     Photo: "",
-    FirstName: "Gibson",
-    LastName: "Mooney",
-    Email: "gibsonmooney@sequitur.com",
-    FullUserName: "Gibson Mooney",
-    PhoneNumber: "31998662139",
+    FirstName: "Tammi",
+    LastName: "Wolfe",
+    Email: "tammiwolfe@eventage.com",
+    FullUserName: "Tammi Wolfe",
+    PhoneNumber: "31999447324",
+    Matricula: "177298850",
     DocumentType: "CPF",
-    DocumentNumber: "'54876920978'",
-    Name: "Gibson Mooney",
-    Password: "incididunt773",
-    UserName: "gibsonmooney"
+    DocumentNumber: "'55753900264'",
+    Name: "Tammi Wolfe",
+    Password: "adipisicing453",
+    UserName: "tammiwolfe",
+    Active: true
   },
   {
-    Id: "f51cd057-1f3e-4c0a-b7c8-ff138ad9378f",
+    Id: "7d757945-25a6-4ef6-8175-a0f6772a4974",
     Photo: "",
-    FirstName: "Schneider",
-    LastName: "Ratliff",
-    Email: "schneiderratliff@sequitur.com",
-    FullUserName: "Schneider Ratliff",
-    PhoneNumber: "31998607059",
-    DocumentType: "CPF",
-    DocumentNumber: "'96373336726'",
-    Name: "Schneider Ratliff",
-    Password: "ipsum500",
-    UserName: "schneiderratliff"
-  },
-  {
-    Id: "874bc356-4ad6-47b7-beb8-3f78970ee753",
-    Photo: "",
-    FirstName: "Cabrera",
-    LastName: "Blackwell",
-    Email: "cabrerablackwell@sequitur.com",
-    FullUserName: "Cabrera Blackwell",
-    PhoneNumber: "31992436749",
+    FirstName: "Catalina",
+    LastName: "Howe",
+    Email: "catalinahowe@eventage.com",
+    FullUserName: "Catalina Howe",
+    PhoneNumber: "31988646117",
+    Matricula: "171154396",
     DocumentType: "CNH",
-    DocumentNumber: "'94790538900'",
-    Name: "Cabrera Blackwell",
-    Password: "nostrud515",
-    UserName: "cabrerablackwell"
+    DocumentNumber: "'26814849609'",
+    Name: "Catalina Howe",
+    Password: "voluptate583",
+    UserName: "catalinahowe",
+    Active: true
+  },
+  {
+    Id: "6fa84859-87f1-4e71-9c75-477033445902",
+    Photo: "",
+    FirstName: "Talley",
+    LastName: "Mcguire",
+    Email: "talleymcguire@eventage.com",
+    FullUserName: "Talley Mcguire",
+    PhoneNumber: "31987036717",
+    Matricula: "177043451",
+    DocumentType: "CPF",
+    DocumentNumber: "'50368809225'",
+    Name: "Talley Mcguire",
+    Password: "excepteur321",
+    UserName: "talleymcguire",
+    Active: true
+  },
+  {
+    Id: "7d2f6a44-2860-42c9-8a6a-2767c170a3f8",
+    Photo: "",
+    FirstName: "Mullins",
+    LastName: "Harmon",
+    Email: "mullinsharmon@eventage.com",
+    FullUserName: "Mullins Harmon",
+    PhoneNumber: "31995344334",
+    Matricula: "171261572",
+    DocumentType: "CPF",
+    DocumentNumber: "'17054964794'",
+    Name: "Mullins Harmon",
+    Password: "eiusmod336",
+    UserName: "mullinsharmon",
+    Active: true
   }
 ];
 
@@ -186,6 +208,9 @@ export const ImportedUsers = [
 //     PhoneNumber: function(tags) {
 //         return ("319"+ tags.integer(8500, 9999) + tags.integer(1829, 9998)).toString();
 //     },
+//     Matricula: function(tags) {
+//         return ("17"+ tags.integer(1, 911) + tags.integer(18, 9911)).toString();
+//     },
 //     DocumentType: "{{random('CPF', 'RG', 'CNH')}}",
 //     DocumentNumber: "'{{integer(00000000000, 99999999999)}}'",
 //     Name: function() {
@@ -202,6 +227,7 @@ export const ImportedUsers = [
 //         .replace(/[ú]/g, "u")
 //         .replace(/[ç]/g, "c")
 //         .replace(/[ñ]/g, "n");
-//     }
+//     },
+//     Active: "true"
 //   }
 // ]

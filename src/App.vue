@@ -54,6 +54,14 @@
               >Página inicial</md-tooltip
             >
           </md-list-item>
+
+          <md-list-item @click="to('/users')">
+            <md-icon>person</md-icon>
+            <span class="md-list-item-text">Usuários</span>
+            <md-tooltip md-direction="right" v-show="!menuVisible"
+              >Usuários</md-tooltip
+            >
+          </md-list-item>
         </md-list>
       </md-app-drawer>
 

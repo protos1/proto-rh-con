@@ -20,6 +20,7 @@
         :required="required"
         :disabeld="disabled"
         @onchage="changeValue()"
+        autocomplete="autocomplete"
       ></md-input>
       <span
         class="md-error"
@@ -39,6 +40,7 @@
         :maxlength="maxlength"
         :required="required"
         :disabeld="disabled"
+        autocomplete="autocomplete"
       ></md-input>
     </md-field>
   </div>
@@ -61,7 +63,8 @@ export default {
     "focus",
     "required",
     "disabled",
-    "update"
+    "update",
+    "autocomplete"
   ],
   data: function() {
     return {

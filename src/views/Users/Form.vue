@@ -1,5 +1,5 @@
 <template>
-  <div class="s1-U__pd24" v-if="Object.keys(Form).length">
+  <form class="s1-U__pd24" v-if="Object.keys(Form).length">
     <div class="s1-U__mg--bt16">
       <h2 class="md-title s1-U__text-color--primary s1-U__mg--bt8">
         Dados pessoais
@@ -161,6 +161,7 @@
           :focus="() => $v.Form.Password.$reset()"
           type="password"
           :validationmodel="$v.Form.Password"
+          autocomplete="false"
           required
         />
       </div>
@@ -184,7 +185,7 @@
         required
       />
     </div>
-  </div>
+  </form>
 </template>
 
 <script>

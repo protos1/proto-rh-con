@@ -10,7 +10,7 @@
     >
       <md-button
         class="s1-md-bordered md-primary s1-U__mg--rt8"
-        @click="to('users')"
+        @click="importUserDialog = true"
       >
         <div class="s1-U__align-children--center s1-U__pd--rt8">
           <md-icon class="s1-U__mg--rt4">file_upload</md-icon>
@@ -86,7 +86,7 @@
         <div class="s1-U__align-children--center s1-U__justify-content--center">
           <md-button
             class="s1-md-bordered md-primary s1-U__mg--rt8"
-            @click="to('users')"
+            @click="importUserDialog = true"
           >
             <div
               class="s1-U__align-children--center s1-U__pd--rt24 s1-U__pd--lt16"
@@ -137,12 +137,65 @@
         </md-table-row>
       </md-table>
     </section>
+
+    <md-dialog :md-active.sync="importUserDialog">
+      <header
+        class="s1-U__pd24 s1-U__align-children--center s1-U__justify-content--space-between"
+      >
+        <h2 class="md-title">Importar usuários</h2>
+        <md-button
+          class="md-icon-button md-mini s1-U__mg--rt8"
+          @click="importUserDialog = false"
+        >
+          <md-icon>close</md-icon>
+        </md-button>
+      </header>
+
+      <div class="s1-U__pd24">
+        <p class="s1-U__pd--bt8">
+          Selecione um arquivo .CSV válido.
+        </p>
+        <md-field>
+          <label>Arquivo .CSV</label>
+          <md-file v-model="file" />
+        </md-field>
+        <div class="s1-U__text-align--right s1-U__pd--tp24">
+          <div>
+            <md-button
+              class="md-raised md-primary"
+              @click="importUsers(ImportedUsers)"
+              :disabled="!file"
+            >
+              <div
+                class="s1-U__align-children--center s1-U__pd--rt24 s1-U__pd--lt16"
+              >
+                <md-icon class="s1-U__mg--rt4">file_upload</md-icon>
+                <span>importar</span>
+              </div>
+            </md-button>
+          </div>
+          <div class="s1-U__mg--tp16">
+            <md-button class="s1-md-bordered md-primary">
+              <div
+                class="s1-U__align-children--center s1-U__pd--rt24 s1-U__pd--lt16"
+              >
+                <md-icon class="s1-U__mg--rt4">get_app</md-icon>
+                <span style="text-transform: none"
+                  >Download do arquivo padrão</span
+                >
+              </div>
+            </md-button>
+          </div>
+        </div>
+      </div>
+    </md-dialog>
   </div>
 </template>
 
 <script>
 import _ from "lodash";
 import router from "@/router";
+import { ImportedUsers } from "../../mocks/user";
 
 export default {
   name: "UserList",
@@ -155,16 +208,41 @@ export default {
     },
     Fields: [],
     tableLoading: false,
-    Filtered: false
+    Filtered: false,
+    importUserDialog: false,
+    file: null,
+    ImportedUsers
   }),
+  beforeMount() {
+    this.Fields = Object.keys(this.$store.state.models.user).filter(
+      item => item !== "Id" && item !== "Photo"
+    );
+  },
   methods: {
     setUsers(users) {
       if (users.length > 0) {
         this.Users = users;
-        this.Fields = Object.keys(users[0]).filter(
-          item => item !== "Id" && item !== "Photo"
-        );
       }
+    },
+    importUsers() {
+      this.$store.dispatch("turnOnGeneralLoading");
+      this.importUserDialog = false;
+
+      setTimeout(() => {
+        this.$store.dispatch("importUsers", _.cloneDeep(this.ImportedUsers));
+        this.setUsers(_.cloneDeep(this.$store.state.users));
+      }, 2000);
+
+      setTimeout(() => {
+        this.$store.dispatch("turnOffGeneralLoading");
+      }, 2200);
+
+      setTimeout(() => {
+        this.$store.dispatch("showSnackbar", {
+          text: `${this.ImportedUsers.length} usuários importados com sucesso`
+        });
+        this.to("/users");
+      }, 2200);
     },
     to(r) {
       router.push(r);
@@ -183,7 +261,8 @@ export default {
     findUsers(text) {
       return _.cloneDeep(this.$store.state.users).filter(user => {
         for (let i = 0; i < this.Fields.length; i++) {
-          if (user[this.Fields[i]].includes(text)) return user;
+          if (user[this.Fields[i]] && user[this.Fields[i]].includes(text))
+            return user;
         }
       });
     },

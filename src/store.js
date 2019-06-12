@@ -33,6 +33,9 @@ export default new Vuex.Store({
     createUser(state, payload) {
       state.users = [payload, ...state.users];
     },
+    importUsers(state, payload) {
+      state.users = [...payload, ...state.users];
+    },
     editUser(state, payload) {
       state.users = state.users.map(user => {
         return user.Id === payload.Id ? { ...user, ...payload } : user;
@@ -60,6 +63,9 @@ export default new Vuex.Store({
     },
     editUser({ commit }, user) {
       commit("editUser", user);
+    },
+    importUsers({ commit }, users) {
+      commit("importUsers", users);
     }
   }
 });

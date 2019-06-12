@@ -8,7 +8,7 @@
         <md-icon>arrow_back</md-icon>
       </md-button>
       <h1 class="md-display-1" @click="Form.UserName = 'renan'">
-        Criação de usuário
+        Edição de usuário
       </h1>
     </header>
 
@@ -23,11 +23,11 @@
       <div class="s1-U__pd24 s1-U__text-align--right">
         <md-button
           class="md-raised md-primary"
-          @click="create()"
+          @click="edit()"
           :disabled="$v.Form.$invalid"
         >
           <div class="s1-U__align-children--center">
-            <span>Criar</span>
+            <span>Salvar</span>
           </div>
         </md-button>
       </div>
@@ -35,8 +35,8 @@
 
     <md-dialog-confirm
       :md-active.sync="abortConfirm"
-      md-title="Abortar criação de usuário?"
-      md-content="Os dados preenchidos serão perdidos permanentemente"
+      md-title="Abortar edição de usuário?"
+      md-content="Os dados alterados serão perdidos permanentemente"
       md-confirm-text="Sair"
       md-cancel-text="Ficar"
       @md-cancel="abortConfirm = false"
@@ -51,6 +51,7 @@ import { required, minLength, email } from "vuelidate/lib/validators";
 import _ from "lodash";
 import router from "@/router";
 import UserForm from "./Form";
+import * as u from "../../assets/utils/index";
 
 export default {
   name: "NewUser",
@@ -62,11 +63,11 @@ export default {
     abortConfirm: false
   }),
   methods: {
-    create() {
+    edit() {
       this.$store.dispatch("turnOnGeneralLoading");
 
       setTimeout(() => {
-        this.$store.dispatch("createUser", _.cloneDeep(this.Form));
+        this.$store.dispatch("editUser", _.cloneDeep(this.Form));
       }, 1000);
 
       setTimeout(() => {
@@ -75,7 +76,7 @@ export default {
 
       setTimeout(() => {
         this.$store.dispatch("showSnackbar", {
-          text: `Usuário ${this.Form.FirstName} cadastrado com sucesso`
+          text: `Usuário ${this.Form.FirstName} editado com sucesso.`
         });
         this.to("/users");
       }, 1600);
@@ -107,7 +108,17 @@ export default {
     }
   },
   mounted() {
-    this.setForm(this.$store.state.models.user);
+    if (!this.$route.params.id) this.to("/users");
+
+    const user = u.getObjByProp(
+      this.$store.state.users,
+      this.$route.params.id,
+      "Id"
+    );
+
+    if (!user) this.to("/users");
+
+    this.setForm(user);
   },
   validations: {
     Form: {

@@ -74,7 +74,7 @@
       md-persistent
     >
       <p>
-        Solicitação conluída com sucesso.
+        {{ $store.state.view.snackbarText }}
       </p>
       <md-button class="md-primary flex-shrink-0" @click="clSnack()"
         >Fechar</md-button

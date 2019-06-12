@@ -4,7 +4,7 @@ import Vuex from "vuex";
 // import _ from "lodash";
 import models from "./mocks/models";
 import { all as users } from "./mocks/user";
-import currentUser from "./mocks/user";
+import { currentUser } from "./mocks/user.js";
 import * as u from "./assets/utils/index";
 
 Vue.use(Vuex);
@@ -16,7 +16,8 @@ export default new Vuex.Store({
     currentUser,
     view: {
       generalLoading: false,
-      showSnackbar: false
+      showSnackbar: false,
+      snackbarText: ""
     }
   },
   mutations: {
@@ -25,7 +26,8 @@ export default new Vuex.Store({
       state.view.generalLoading = payload;
     },
     setSnackbar(state, payload) {
-      state.view.showSnackbar = payload;
+      state.view.showSnackbar = payload.show;
+      payload.text ? (state.view.snackbarText = payload.text) : "";
     },
     //USERS
     createUser(state, payload) {
@@ -45,15 +47,15 @@ export default new Vuex.Store({
     turnOffGeneralLoading({ commit }) {
       commit("setGeneralLoading", false);
     },
-    showSnackbar({ commit }) {
-      commit("setSnackbar", true);
+    showSnackbar({ commit }, { text }) {
+      commit("setSnackbar", { show: true, text });
     },
     hideSnackbar({ commit }) {
       commit("setSnackbar", false);
     },
     //USERS
     createUser({ commit }, userObj) {
-      const user = { Id: u.randomString(64, "Aa#"), ...userObj };
+      const user = { Id: u.randomString(12, "Aa#"), ...userObj };
       commit("createUser", user);
     },
     editUser({ commit }, user) {

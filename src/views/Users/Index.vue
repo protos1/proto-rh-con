@@ -158,12 +158,22 @@
           </md-table-cell>
 
           <md-table-cell md-label="" md-sort-by="" md-numeric>
-            <md-button
-              class="md-icon-button md-mini"
-              @click="to(`/users/edit/${item.Id}`)"
-            >
-              <md-icon>more_vert</md-icon>
-            </md-button>
+            <md-menu md-direction="bottom-end">
+              <md-button md-menu-trigger class="md-icon-button md-mini">
+                <md-icon>more_vert</md-icon>
+              </md-button>
+              <md-menu-content>
+                <md-menu-item @click="to(`/users/edit/${item.Id}`)"
+                  >Editar</md-menu-item
+                >
+                <md-menu-item @click="toogleActive(item.Id)">{{
+                  item.Active ? "Desativar" : "Ativar"
+                }}</md-menu-item>
+                <md-menu-item disable>
+                  <span class="s1-U__text-color--dark-3">Excluir</span>
+                </md-menu-item>
+              </md-menu-content>
+            </md-menu>
           </md-table-cell>
         </md-table-row>
       </md-table>
@@ -228,13 +238,14 @@
 import _ from "lodash";
 import router from "@/router";
 import { ImportedUsers } from "../../mocks/user";
+import * as u from "../../assets/utils/index";
 
 export default {
   name: "UserList",
   data: () => ({
     Users: [],
     currentSort: "FirstName",
-    currentSortOrder: "asc",
+    currentSortOrder: "desc",
     Form: {
       Search: null
     },
@@ -254,7 +265,7 @@ export default {
   methods: {
     setUsers(users) {
       if (users.length > 0) {
-        this.Users = users;
+        this.Users = this.customSort(users);
       } else {
         this.Users = [];
       }
@@ -278,6 +289,28 @@ export default {
         });
         this.to("/users");
       }, 2200);
+    },
+    toogleActive(id) {
+      const user = u.getObjByProp(this.$store.state.users, id, "Id");
+
+      this.$store.dispatch("turnOnGeneralLoading");
+
+      setTimeout(() => {
+        this.$store.dispatch("toogleActive", id);
+      }, 500);
+
+      setTimeout(() => {
+        this.$store.dispatch("turnOffGeneralLoading");
+        this.userFilter();
+      }, 600);
+
+      setTimeout(() => {
+        this.$store.dispatch("showSnackbar", {
+          text: `${user.FirstName} agora está ${
+            user.Active ? "Inativo" : "Ativo"
+          }.`
+        });
+      }, 700);
     },
     to(r) {
       router.push(r);
@@ -348,17 +381,17 @@ export default {
         this.setUsers(this.findUsers(this.Form.Search));
         this.Filtered = true;
         this.tableLoading = false;
-      }, 1000);
+      }, 500);
     },
     cleanFilter() {
       this.tableLoading = true;
 
       setTimeout(() => {
-        this.Users = _.cloneDeep(this.$store.state.users);
+        this.setUsers(_.cloneDeep(this.$store.state.users));
         this.Filtered = false;
         this.tableLoading = false;
         this.Form.Search = null;
-      }, 1000);
+      }, 500);
     },
     changeStatus(status) {
       this.setUsers(this.findUsersByStatus(status));
@@ -366,9 +399,10 @@ export default {
     thereAreMoreThanOneStatus() {
       let ret = false;
       let status;
-      for (let i = 0; i < this.Users.length; i++) {
-        if (i === 0) status = this.Users[i].Active;
-        if (i > 0 && this.Users[i].Active !== status) {
+      const Users = this.$store.state.users;
+      for (let i = 0; i < Users.length; i++) {
+        if (i === 0) status = Users[i].Active;
+        if (i > 0 && Users[i].Active !== status) {
           ret = true;
           break;
         }

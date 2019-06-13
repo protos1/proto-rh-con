@@ -40,6 +40,13 @@ export default new Vuex.Store({
       state.users = state.users.map(user => {
         return user.Id === payload.Id ? { ...user, ...payload } : user;
       });
+    },
+    toogleActive(state, id) {
+      let userRef = u.getObjByProp(state.users, id, "Id");
+
+      state.users = state.users.map(user => {
+        return user.Id === id ? { ...userRef, Active: !userRef.Active } : user;
+      });
     }
   },
   actions: {
@@ -66,6 +73,9 @@ export default new Vuex.Store({
     },
     importUsers({ commit }, users) {
       commit("importUsers", users);
+    },
+    toogleActive({ commit }, id) {
+      commit("toogleActive", id);
     }
   }
 });

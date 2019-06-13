@@ -81,10 +81,13 @@ export default {
       }, 1600);
     },
     abort() {
-      this.to("/users");
+      this.back();
     },
     to(r) {
       router.push(r);
+    },
+    back() {
+      router.go(-1);
     },
     updateValue(model, value) {
       this.Form[model] = value;

@@ -76,7 +76,7 @@
           </md-button>
         </div>
       </div>
-      <div>
+      <div v-show="thereAreMoreThanOneStatus()">
         <md-checkbox
           class="s1-loc__check s1-U__mg--rt32"
           v-model="Status"
@@ -362,6 +362,18 @@ export default {
     },
     changeStatus(status) {
       this.setUsers(this.findUsersByStatus(status));
+    },
+    thereAreMoreThanOneStatus() {
+      let ret = false;
+      let status;
+      for (let i = 0; i < this.Users.length; i++) {
+        if (i === 0) status = this.Users[i].Active;
+        if (i > 0 && this.Users[i].Active !== status) {
+          ret = true;
+          break;
+        }
+      }
+      return ret;
     }
   },
   mounted() {

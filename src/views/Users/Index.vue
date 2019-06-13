@@ -1,5 +1,19 @@
 <template>
-  <div class="s1-loc__container m">
+  <div class="s1-loc__container m s1-loc__relative">
+    <div
+      class="s1-U__align-children--center table-loading"
+      :class="{ active: tableLoading }"
+    >
+      <md-progress-spinner
+        class="md-accent s1-U__mg--bt4"
+        :md-stroke="2"
+        :md-diameter="24"
+        md-mode="indeterminate"
+      ></md-progress-spinner>
+      <p class="md-body-2 s1-U__text-color--dark-2 s1-U__mg--lt16">
+        Carregando
+      </p>
+    </div>
     <header>
       <h1 class="md-display-1">Usuários</h1>
     </header>
@@ -51,13 +65,6 @@
               </md-button>
             </md-field>
           </div>
-          <md-progress-spinner
-            class="md-accent s1-U__mg--bt4"
-            :md-stroke="2"
-            :md-diameter="24"
-            v-show="tableLoading"
-            md-mode="indeterminate"
-          ></md-progress-spinner>
         </div>
         <div
           class="s1-U__align-children--center s1-U__pd--bt16"
@@ -423,3 +430,25 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.table-loading {
+  background-color: rgba(255, 255, 255, 0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+
+  transition: z-index 0ms linear 200ms, opacity 200ms ease-in-out 0ms;
+  z-index: -1;
+  opacity: 0;
+
+  &.active {
+    transition: z-index 0ms linear 0ms, opacity 200ms ease-in-out 10ms;
+    z-index: 99;
+    opacity: 1;
+  }
+}
+</style>

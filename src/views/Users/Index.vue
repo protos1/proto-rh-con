@@ -78,12 +78,15 @@
       </div>
       <div v-show="thereAreMoreThanOneStatus()">
         <md-checkbox
-          class="s1-loc__check s1-U__mg--rt32"
+          class="md-primary s1-loc__check s1-U__mg--rt32"
           v-model="Status"
           :value="true"
           >Ativos</md-checkbox
         >
-        <md-checkbox class="s1-loc__check" v-model="Status" :value="false"
+        <md-checkbox
+          class="md-primary s1-loc__check"
+          v-model="Status"
+          :value="false"
           >Inativos</md-checkbox
         >
       </div>

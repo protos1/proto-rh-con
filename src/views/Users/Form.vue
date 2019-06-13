@@ -168,7 +168,10 @@
         <div class="s1-U__pd8 s1-U__flex-shrink-0"></div>
 
         <div class="s1-U__pd--tp20 s1-U__pd--bt8">
-          <md-switch v-model="Form.Active" class="s1-U__mg0"></md-switch>
+          <md-switch
+            v-model="Form.Active"
+            class="md-primary s1-U__mg0"
+          ></md-switch>
           <md-tooltip md-direction="right">
             {{ Form.Active ? "Ativo" : "Inativo" }}
           </md-tooltip>

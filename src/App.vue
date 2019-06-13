@@ -62,6 +62,14 @@
               >Usuários</md-tooltip
             >
           </md-list-item>
+
+          <md-list-item @click="to('/users')">
+            <md-icon>insert_drive_file</md-icon>
+            <span class="md-list-item-text">Contratos</span>
+            <md-tooltip md-direction="right" v-show="!menuVisible"
+              >Usuários</md-tooltip
+            >
+          </md-list-item>
         </md-list>
       </md-app-drawer>
 

@@ -26,49 +26,66 @@
     </section>
 
     <section
-      class="s1-U__align-children--center s1-U__justify-content--space-between s1-U__flex-wrap s1-U__mg--tp32"
+      class="s1-U__mg--tp32 s1-U__align-children--center s1-U__justify-content--space-between s1-U__flex-wrap"
       v-show="Users.length > 0 || Filtered"
     >
-      <div class="s1-U__align-children--center s1-U__pd--bt16">
-        <div class="s1-loc__md-field-wrapper s1-U__mg--rt8 s1-U__width--240px">
-          <md-field class="s1-U__mg0">
-            <md-input
-              class="s1-U__full-width"
-              v-model="Form.Search"
-              placeholder="Buscar usuário"
-            />
-            <md-button
-              type="submit"
-              class="s1-U__mg0 md-icon-button md-dense squared"
-              style=" margin-top: -2px; margin-right: 2px;"
-              @click="userFilter()"
-              :disabled="tableLoading"
-            >
-              <md-icon>search</md-icon>
-            </md-button>
-          </md-field>
+      <div>
+        <div class="s1-U__align-children--center s1-U__pd--bt16">
+          <div
+            class="s1-loc__md-field-wrapper s1-U__mg--rt8 s1-U__width--240px"
+          >
+            <md-field class="s1-U__mg0">
+              <md-input
+                class="s1-U__full-width"
+                v-model="Form.Search"
+                placeholder="Buscar usuário"
+              />
+              <md-button
+                type="submit"
+                class="s1-U__mg0 md-icon-button md-dense squared"
+                style=" margin-top: -2px; margin-right: 2px;"
+                @click="userFilter()"
+                :disabled="tableLoading"
+              >
+                <md-icon>search</md-icon>
+              </md-button>
+            </md-field>
+          </div>
+          <md-progress-spinner
+            class="md-accent s1-U__mg--bt4"
+            :md-stroke="2"
+            :md-diameter="24"
+            v-show="tableLoading"
+            md-mode="indeterminate"
+          ></md-progress-spinner>
         </div>
-        <md-progress-spinner
-          class="md-accent s1-U__mg--bt4"
-          :md-stroke="2"
-          :md-diameter="24"
-          v-show="tableLoading"
-          md-mode="indeterminate"
-        ></md-progress-spinner>
+        <div
+          class="s1-U__align-children--center s1-U__pd--bt16"
+          v-show="Filtered && Form.Search"
+        >
+          <div class="md-body-2">
+            Mostrando resultados para "{{ Form.Search }}"
+          </div>
+          <md-button class="md-mini s1-U__mg--lt16" @click="cleanFilter()">
+            <md-icon class="s1-U__mg--rt4">
+              <span style="font-size: 18px">close</span>
+            </md-icon>
+            <span>
+              <small>limpar</small>
+            </span>
+          </md-button>
+        </div>
       </div>
-      <div
-        class="s1-U__align-children--center s1-U__justify-content--flex-end s1-U__pd--bt16 s1-U__pd--lt16"
-        v-show="Filtered"
-      >
-        <div class="md-body-2">Resultados para "{{ Form.Search }}"</div>
-        <md-button class="md-mini s1-U__mg--lt16" @click="cleanFilter()">
-          <md-icon class="s1-U__mg--rt4">
-            <span style="font-size: 18px">close</span>
-          </md-icon>
-          <span>
-            <small>limpar</small>
-          </span>
-        </md-button>
+      <div>
+        <md-checkbox
+          class="s1-loc__check s1-U__mg--rt32"
+          v-model="Status"
+          :value="true"
+          >Ativos</md-checkbox
+        >
+        <md-checkbox class="s1-loc__check" v-model="Status" :value="false"
+          >Inativos</md-checkbox
+        >
       </div>
     </section>
 
@@ -165,7 +182,7 @@
         </md-button>
       </header>
 
-      <div class="s1-U__pd24">
+      <div class="s1-U__pd--lt24 s1-U__pd--rt24">
         <p class="s1-U__pd--bt8">
           Selecione um arquivo .CSV válido.
         </p>
@@ -173,33 +190,34 @@
           <label>Arquivo .CSV</label>
           <md-file v-model="file" />
         </md-field>
-        <div class="s1-U__text-align--right s1-U__pd--tp24">
-          <div>
-            <md-button
-              class="md-raised md-primary"
-              @click="importUsers(ImportedUsers)"
-              :disabled="!file"
+      </div>
+
+      <div class="s1-U__text-align--right s1-U__pd24 s1-U__pd--tp16">
+        <div>
+          <md-button
+            class="md-raised md-primary"
+            @click="importUsers(ImportedUsers)"
+            :disabled="!file"
+          >
+            <div
+              class="s1-U__align-children--center s1-U__pd--rt24 s1-U__pd--lt16"
             >
-              <div
-                class="s1-U__align-children--center s1-U__pd--rt24 s1-U__pd--lt16"
+              <md-icon class="s1-U__mg--rt4">file_upload</md-icon>
+              <span>importar</span>
+            </div>
+          </md-button>
+        </div>
+        <div class="s1-U__mg--tp16">
+          <md-button class="s1-md-bordered md-primary">
+            <div
+              class="s1-U__align-children--center s1-U__pd--rt24 s1-U__pd--lt16"
+            >
+              <md-icon class="s1-U__mg--rt4">get_app</md-icon>
+              <span style="text-transform: none"
+                >Download do arquivo padrão</span
               >
-                <md-icon class="s1-U__mg--rt4">file_upload</md-icon>
-                <span>importar</span>
-              </div>
-            </md-button>
-          </div>
-          <div class="s1-U__mg--tp16">
-            <md-button class="s1-md-bordered md-primary">
-              <div
-                class="s1-U__align-children--center s1-U__pd--rt24 s1-U__pd--lt16"
-              >
-                <md-icon class="s1-U__mg--rt4">get_app</md-icon>
-                <span style="text-transform: none"
-                  >Download do arquivo padrão</span
-                >
-              </div>
-            </md-button>
-          </div>
+            </div>
+          </md-button>
         </div>
       </div>
     </md-dialog>
@@ -225,7 +243,8 @@ export default {
     Filtered: false,
     importUserDialog: false,
     file: null,
-    ImportedUsers
+    ImportedUsers,
+    Status: [true, false]
   }),
   beforeMount() {
     this.Fields = Object.keys(this.$store.state.models.user).filter(
@@ -236,6 +255,8 @@ export default {
     setUsers(users) {
       if (users.length > 0) {
         this.Users = users;
+      } else {
+        this.Users = [];
       }
     },
     importUsers() {
@@ -275,10 +296,45 @@ export default {
     findUsers(text) {
       return _.cloneDeep(this.$store.state.users).filter(user => {
         for (let i = 0; i < this.Fields.length; i++) {
-          if (user[this.Fields[i]] && user[this.Fields[i]].includes(text))
+          if (
+            user[this.Fields[i]] &&
+            this.Fields[i] !== "Active" &&
+            user[this.Fields[i]].includes(text)
+          )
             return user;
         }
       });
+    },
+    findUsersByStatus(status) {
+      if (status.length === 0) {
+        this.Filtered = true;
+        return [];
+      }
+
+      if (status.length === 2) {
+        if (this.Form.Search) {
+          return _.cloneDeep(this.Users).filter(user => {
+            this.Filtered = true;
+            return user.Active === status[0] || user.Active === status[1];
+          });
+        } else {
+          return _.cloneDeep(this.$store.state.users).filter(user => {
+            return user.Active === status[0] || user.Active === status[1];
+          });
+        }
+      }
+
+      if (this.Form.Search) {
+        return _.cloneDeep(this.Users).filter(user => {
+          this.Filtered = true;
+          return user.Active === status[0];
+        });
+      } else {
+        return _.cloneDeep(this.$store.state.users).filter(user => {
+          this.Filtered = true;
+          return user.Active === status[0];
+        });
+      }
     },
     userFilter() {
       this.tableLoading = true;
@@ -289,7 +345,7 @@ export default {
       }
 
       setTimeout(() => {
-        this.Users = this.findUsers(this.Form.Search);
+        this.setUsers(this.findUsers(this.Form.Search));
         this.Filtered = true;
         this.tableLoading = false;
       }, 1000);
@@ -303,10 +359,18 @@ export default {
         this.tableLoading = false;
         this.Form.Search = null;
       }, 1000);
+    },
+    changeStatus(status) {
+      this.setUsers(this.findUsersByStatus(status));
     }
   },
   mounted() {
     this.setUsers(_.cloneDeep(this.$store.state.users));
+  },
+  watch: {
+    Status: function() {
+      this.changeStatus(this.Status);
+    }
   }
 };
 </script>

@@ -58,7 +58,6 @@
           md-with-hover
         >
           <div
-            @click="to('/mapfre/buy')"
             class="s1-U__pd--tp32 s1-U__pd--bt32 s1-U__pd--lt16 s1-U__pd--rt16 s1-U__text-align--center"
           >
             <div

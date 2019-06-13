@@ -3,8 +3,8 @@
 @include md-register-theme(
   "default",
   (
-    primary: md-get-palette-color(red, 400),
-    accent: md-get-palette-color(red, 900)
+    primary: md-get-palette-color(deeporange, 600),
+    accent: md-get-palette-color(bluegrey, 600)
   )
 );
 //VUE MATERIAL COMPONENTS THEME

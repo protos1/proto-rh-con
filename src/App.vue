@@ -22,17 +22,17 @@
         :md-active.sync="menuVisible"
         md-persistent="mini"
       >
-        <div class="s1-logo__wrapper">
+        <div class="s1-logo__wrapper" style="filter: saturate(2.5);">
           <img
             v-show="!menuVisible"
             class="s1-logo__img"
-            src="./assets/imgs/mapfre-mini.png"
+            src="./assets/imgs/conceta-mini.png"
             alt="company logo"
           />
           <img
             v-show="menuVisible"
             class="s1-logo__img"
-            src="./assets/imgs/mapfre.png"
+            src="./assets/imgs/conceta.png"
             alt="company logo"
           />
         </div>
@@ -66,10 +66,6 @@
       </md-app-drawer>
 
       <md-app-content class="s1-U__bg-color--body-bg s1-loc__relative">
-        <div
-          class="s1-loc__top-brand s1-U__bg-color--primary"
-          v-show="$route.name === 'mapfre'"
-        />
         <div style="z-index: 2; position: relative">
           <router-view />
         </div>

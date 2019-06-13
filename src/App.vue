@@ -22,17 +22,17 @@
         :md-active.sync="menuVisible"
         md-persistent="mini"
       >
-        <div class="s1-logo__wrapper" style="filter: saturate(2.5);">
+        <div class="s1-logo__wrapper">
           <img
             v-show="!menuVisible"
             class="s1-logo__img"
-            src="./assets/imgs/conceta-mini.png"
+            src="./assets/imgs/s1.svg"
             alt="company logo"
           />
           <img
             v-show="menuVisible"
             class="s1-logo__img"
-            src="./assets/imgs/conceta.png"
+            src="./assets/imgs/s1.svg"
             alt="company logo"
           />
         </div>

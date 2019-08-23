@@ -24,6 +24,7 @@
     >
       <md-button
         class="s1-md-bordered md-primary s1-U__mg--rt8"
+        id="import-button"
         @click="importUserDialog = true"
       >
         <div class="s1-U__align-children--center s1-U__pd--rt8">

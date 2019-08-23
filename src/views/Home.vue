@@ -36,6 +36,7 @@
         >
           <div
             class="s1-U__pd--tp32 s1-U__pd--bt32 s1-U__pd--lt16 s1-U__pd--rt16 s1-U__text-align--center"
+            @click="toImport('users')"
           >
             <div
               class="s1--loc__shortcut-icon s1-U__pd16 s1-U__text-color--primary"
@@ -52,7 +53,7 @@
           </div>
         </md-card>
       </div>
-      <div class="md-layout-item s1-U__width--180px">
+      <!-- <div class="md-layout-item s1-U__width--180px">
         <md-card
           class="s1-U__full-height s1-U__border-radius--5px-force"
           md-with-hover
@@ -74,7 +75,7 @@
             </p>
           </div>
         </md-card>
-      </div>
+      </div> -->
     </section>
   </div>
 </template>
@@ -91,6 +92,12 @@ export default {
   methods: {
     to(r) {
       router.push(r);
+    },
+    toImport(r) {
+      router.push(r);
+      setTimeout(() => {
+        document.getElementById("import-button").click();
+      }, 500);
     }
   }
 };
